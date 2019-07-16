@@ -9,14 +9,26 @@
 </head>
 <body>
     <!-- word guess html elements -->
+    <div class="wrapper">
+        <h1>Can you guess the word</h1>
+        <h2>before you run out of chances?</h2>
+        <div id="theWord"></div>
+        <div id="yourGuesses"></div>
+        <div id="chancesLeft"></div>
+        <div id="message"></div>
+    </div>
 
 
 <script>
 
-// create an object/array with words that users must guess - Now? if you say "and" you probably need to write a new statement on a new line!
+// create an array with words that users must guess - Now? if you say "and" you probably need to write a new statement on a new line!
+let LevelOne = ["stormtrooper", "Leia", "wookiee", "alderaan", "lightsaber", "tatooine"];
+// user LevelOne[0].length to display the number of underscores as blank spots
+
 // capture key that user presses as their guess
-// log users guess on the page, decrement the remaining guesses
-// check users guess against the object
+// log users guess on the page, 
+// decrement the remaining guesses
+// check users guess against the current array index
 // if users guess exists in the object, replace underscore with that letter
 // if users guest does not exist on the page, decrement the remaining guesses (optional show and alert saying 'this word does not contain 'userguess')
 // if user guesses all letters before running out of guesses, show congratulations alert, and move to the next word
