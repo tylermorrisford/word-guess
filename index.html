@@ -1,15 +1,20 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Gurajada&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <title>Word Guess Game</title>
     <style>
     body {
         background-color:rgb(51, 51, 51);
+    }
+
+  h1 h2 h3 p{
+    font-size: 2rem;
+    line-height: 2;
     }
 
     .wrapper{
@@ -19,9 +24,11 @@
         height: 80%;
         margin: auto;
         text-align: center;
-        font-family: 'Gurajada', serif;
+        font-family: 'Open Sans', sans-serif;
     }
     
+
+
     </style>
 </head>
 <body>
@@ -30,8 +37,10 @@
         <h1>Can you guess the word</h1>
         <h2>before you run out of chances?</h2>
         <div id="theWord">your word is:</div>
-        <div id="yourGuesses"></div>
-        <div id="chancesLeft"></div>
+        <h3>Letters you've guessed:</h3>
+        <div id="yourGuesses">?</div>
+        <h3>Guesses left:</h3>
+        <div id="chancesLeft">0</div>
         <div id="message"></div>
     </div>
 
@@ -41,19 +50,29 @@
 // create an array with words that users must guess - Now? if you say "and" you probably need to write a new statement on a new line!
 let levelOne = ["stormtrooper", "Leia", "wookiee", "alderaan", "lightsaber", "tatooine"];
 let currentWord = [];
+let userEntry = document.getElementById("yourGuesses");
+let chances = document.getElementById("chancesLeft");
+var g = 0;
 // use  LevelOne[0].length to display the number of underscores as blank spots
 for (i=0; i < levelOne[0].length; i++) {
     currentWord[i] = "_";
+    var g = levelOne[0].length;
 } document.getElementById("theWord").textContent = currentWord.join(" ");
 
 // capture key that user presses as their guess
+document.onkeyup = function(event) {
+var userChoice = event.key;
+
 // log users guess on the page, 
+userEntry.textContent = userChoice;
 // decrement the remaining guesses
+g--;
+chances.textContent = g;
 // check users guess against the current array index
 // if users guess exists in the object, replace underscore with that letter
 // if users guess does not exist in the string, decrement the remaining guesses (optional show an alert saying 'this word does not contain 'userguess')
-// if user guesses all letters before running out of guesses, show congratulations alert, and move to the next word
-
+// if user guesses all letters before running out of guesses (if 'word' === guessedWord, etc) show congratulations alert, and move to the next word
+}
 
 </script>
 
