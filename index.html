@@ -9,6 +9,7 @@
     <title>Word Guess Game</title>
     <style>
     body {
+        background-image: url("assets/sarlacc-pit.jpg");
         background-color:rgb(51, 51, 51);
     }
 
@@ -20,8 +21,8 @@
     .wrapper{
         background-color: white;
         color: black;
-        width: 80%;
-        height: 80%;
+        width: 60%;
+        height: 70%;
         margin: auto;
         text-align: center;
         font-family: 'Open Sans', sans-serif;
@@ -47,29 +48,41 @@
 
 <script>
 
-// create an array with words that users must guess - Now? if you say "and" you probably need to write a new statement on a new line!
-let levelOne = ["stormtrooper", "Leia", "wookiee", "alderaan", "lightsaber", "tatooine"];
+// create an array with words that users must guess - If you say "and" you probably need to write a new statement on a new line!
+let levelOne = ["stormtrooper", "Leia", "wookiee", "alderaan", "lightsaber", "tatooine", "vader", "skywalker", "kenobi"];
+let word = levelOne[Math.floor(Math.random() * levelOne.length)];
 let currentWord = [];
 let userEntry = document.getElementById("yourGuesses");
+let guessesList = [];
 let chances = document.getElementById("chancesLeft");
-var g = 0;
-// use  LevelOne[0].length to display the number of underscores as blank spots
-for (i=0; i < levelOne[0].length; i++) {
+var g = (word.length + 6);
+
+
+// use  word.length to display the number of underscores as blank spots
+for (i=0; i < word.length; i++) {
     currentWord[i] = "_";
-    var g = levelOne[0].length;
 } document.getElementById("theWord").textContent = currentWord.join(" ");
 
-// capture key that user presses as their guess
+// capture key that user presses as their guess 
 document.onkeyup = function(event) {
-var userChoice = event.key;
-
-// log users guess on the page, 
-userEntry.textContent = userChoice;
+var userChoice = event.key.toLowerCase();
+// log users guess on the page, and add it to the array guessesList
+guessesList.push(userChoice);
+userEntry.textContent = guessesList;
 // decrement the remaining guesses
 g--;
 chances.textContent = g;
 // check users guess against the current array index
-// if users guess exists in the object, replace underscore with that letter
+for (j = 0; j < word.length; j++) {
+        if ( word.includes(userChoice)) {
+// if users guess exists in the object, replace underscore with that letter            
+            currentWord[j] = userChoice;
+        } else {}
+
+
+
+}
+
 // if users guess does not exist in the string, decrement the remaining guesses (optional show an alert saying 'this word does not contain 'userguess')
 // if user guesses all letters before running out of guesses (if 'word' === guessedWord, etc) show congratulations alert, and move to the next word
 }
