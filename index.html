@@ -95,7 +95,7 @@ for (j = 0; j < word.length; j++) {
                           // if (word[j] === userChoice) {   <---- this doesn't work
 //  replace underscore with that letter            
            
-        currentWord[j] = userChoice;                // THIS OPERATION DOESN'T TAKE PLACE
+        currentWord[j].textContent = userChoice;                // THIS OPERATION DOESN'T TAKE PLACE
         console.log(word); 
 // if users guess does not exist in the string, do nothing?
         } else {
