@@ -10,11 +10,12 @@
     <style>
     body {
         background-image: url("assets/sarlacc-pit.jpg");
+        background-size: cover;
         background-color:rgb(51, 51, 51);
     }
 
   h1 h2 h3 p{
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 2;
     }
 
@@ -22,7 +23,7 @@
         background-color: white;
         border: 1px solid black;
         color: black;
-        width: 60%;
+        width: 50%;
         height: 70%;
         margin: auto;
         text-align: center;
@@ -36,13 +37,13 @@
 <body>
     <!-- word guess html elements -->
     <div class="wrapper">
-        <h1>Can you guess the word</h1>
-        <h2>before you run out of chances?</h2>
+        <h1>Star Wars Word Guess</h1>
+        <h2>your word is:</h2>
         <div id="theWord">your word is:</div>
         <h3>Letters you've guessed:</h3>
-        <div id="yourGuesses">?</div>
+        <div id="yourGuesses">_</div>
         <h3>Guesses left:</h3>
-        <div id="chancesLeft">0</div>
+        <div id="chancesLeft">?</div>
         <div id="message"></div>
     </div>
 
@@ -75,10 +76,13 @@ g--;
 chances.textContent = g;
 // check users guess against the current array index
 for (j = 0; j < word.length; j++) {
-        if ( word.includes(userChoice)) {
-// if users guess exists in the object, replace underscore with that letter            
+// if users guess exists in the object,
+    if ( word.indexOf(userChoice) >= 0) {
+//  replace underscore with that letter            
             currentWord[j] = userChoice;
-        } else {}
+        } else {
+            console.log(userChoice + " does not appear in the word.");
+        }
 
 
 
