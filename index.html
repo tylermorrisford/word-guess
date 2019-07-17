@@ -20,6 +20,7 @@
 
     .wrapper{
         background-color: white;
+        border: 1px solid black;
         color: black;
         width: 60%;
         height: 70%;
@@ -64,7 +65,7 @@ for (i=0; i < word.length; i++) {
 } document.getElementById("theWord").textContent = currentWord.join(" ");
 
 // capture key that user presses as their guess 
-document.onkeyup = function(event) {
+document.onkeydown = function(event) {
 var userChoice = event.key.toLowerCase();
 // log users guess on the page, and add it to the array guessesList
 guessesList.push(userChoice);
