@@ -16,7 +16,6 @@
 
   h1 h2 h3 p{
     font-size: 1.5rem;
-    line-height: 2;
     }
 
     .wrapper{
@@ -24,7 +23,7 @@
         border: 1px solid black;
         color: black;
         width: 50%;
-        height: 70%;
+        height: 60%;
         margin: auto;
         text-align: center;
         font-family: 'Open Sans', sans-serif;
@@ -40,24 +39,36 @@
         <h1>Star Wars Word Guess</h1>
         <h2>your word is:</h2>
         <div id="theWord">your word is:</div>
-        <h3>Letters you've guessed:</h3>
+        <h4>Letters you've guessed:</h4>
         <div id="yourGuesses">_</div>
-        <h3>Guesses left:</h3>
-        <div id="chancesLeft">?</div>
-        <div id="message"></div>
+        <h4>Guesses left: <span id="chancesLeft">?</span></h4>
+        <h4>wins: <span id="winNumber">0</span></h4>
+
     </div>
 
 
 <script>
-
+// ARRAYS AND VARIABLES --------------------------------------------|||||||||
 // create an array with words that users must guess - If you say "and" you probably need to write a new statement on a new line!
-let levelOne = ["stormtrooper", "Leia", "wookiee", "alderaan", "lightsaber", "tatooine", "vader", "skywalker", "kenobi"];
+let levelOne = [
+    "stormtrooper", 
+    "Leia", 
+    "wookiee", 
+    "alderaan", 
+    "lightsaber", 
+    "tatooine", 
+    "vader", 
+    "skywalker", 
+    "kenobi", 
+    "jabba", 
+    "carbonite"];
 let word = levelOne[Math.floor(Math.random() * levelOne.length)];
 let currentWord = [];
 let userEntry = document.getElementById("yourGuesses");
 let guessesList = [];
 let chances = document.getElementById("chancesLeft");
 var g = (word.length + 6);
+let wins = 0;
 
 
 // use  word.length to display the number of underscores as blank spots
@@ -65,7 +76,7 @@ for (i=0; i < word.length; i++) {
     currentWord[i] = "_";
 } document.getElementById("theWord").textContent = currentWord.join(" ");
 
-// capture key that user presses as their guess 
+// capture key that user presses as their guess |||  BEGINS GAME LOOP  ||| (for better or worse)
 document.onkeydown = function(event) {
 var userChoice = event.key.toLowerCase();
 // log users guess on the page, and add it to the array guessesList
@@ -77,9 +88,13 @@ chances.textContent = g;
 // check users guess against the current array index
 for (j = 0; j < word.length; j++) {
 // if users guess exists in the object,
-    if ( word.indexOf(userChoice) >= 0) {
+    if (word.includes(userChoice)) {
+                          // if (word[j] === userChoice) {   <---- this doesn't work
 //  replace underscore with that letter            
-            currentWord[j] = userChoice;
+           
+        currentWord[j] = userChoice;
+        console.log(word); 
+// if users guess does not exist in the string, do nothing?
         } else {
             console.log(userChoice + " does not appear in the word.");
         }
@@ -88,7 +103,7 @@ for (j = 0; j < word.length; j++) {
 
 }
 
-// if users guess does not exist in the string, decrement the remaining guesses (optional show an alert saying 'this word does not contain 'userguess')
+
 // if user guesses all letters before running out of guesses (if 'word' === guessedWord, etc) show congratulations alert, and move to the next word
 }
 
