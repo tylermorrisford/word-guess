@@ -70,6 +70,7 @@ let userEntry = document.getElementById("yourGuesses");
 let guessesList = [];
 let chances = document.getElementById("chancesLeft");
 var g = (word.length + 6);
+let winNum = document.getElementById("winNumber");
 let wins = 0;
 
 
@@ -106,7 +107,13 @@ for (j = 0; j < word.length; j++) {
 }
 
 
-// if user guesses all letters before running out of guesses (if 'word' === guessedWord, etc) show congratulations alert, and move to the next word
+// if user guesses all letters before running out of guesses (if 'word' === guessedWord, etc) show congratulations alert,
+
+// increment number of wins
+wins++;
+winNum = wins;
+// and move to the next word - re-initialize the game?
+
 }
 
 </script>
