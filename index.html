@@ -89,14 +89,18 @@ userEntry.textContent = guessesList;
 g--;
 chances.textContent = g;
 // check users guess against the current array index
-for (j = 0; j < word.length; j++) {
+
 // if users guess exists in the object,
     if (word.includes(userChoice)) {
                           // if (word[j] === userChoice) {   <---- this doesn't work
 //  replace underscore with that letter            
-           
-        currentWord[j].textContent = userChoice;                // THIS OPERATION DOESN'T TAKE PLACE
+for (j = 0; j < word.length; j++) {  
+
+        if (userChoice === word[j]) {
+        currentWord[j] = word[j];}
+        document.getElementById("theWord").textContent = currentWord.join(" ");                // THIS OPERATION DOESN'T TAKE PLACE
         console.log(word); 
+}
 // if users guess does not exist in the string, do nothing?
         } else {
             console.log(userChoice + " does not appear in the word.");
@@ -104,7 +108,7 @@ for (j = 0; j < word.length; j++) {
 
 
 
-}
+
 
 
 // if user guesses all letters before running out of guesses (if 'word' === guessedWord, etc) show congratulations alert,
