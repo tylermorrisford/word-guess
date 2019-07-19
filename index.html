@@ -14,11 +14,9 @@
             background-size: cover;
             background-color: rgb(51, 51, 51);
         }
-
         h1 h2 h3 p {
             font-size: 1.5rem;
         }
-
         .wrapper {
             background-color: white;
             border: 1px solid black;
@@ -72,13 +70,10 @@
         var g = (word.length + 6);
         let winNum = document.getElementById("winNumber");
         let wins = 0;
-
-
         // use word.length to display the number of underscores as blank spots
         for (i = 0; i < word.length; i++) {
             currentWord[i] = "_";
         } theWord.textContent = currentWord.join(" ");
-
         // capture key that user presses as their guess |||  BEGINS GAME LOOP  ||| (for better or worse)
         document.onkeydown = function (event) {
             var userChoice = event.key.toLowerCase();
@@ -107,29 +102,19 @@
                 console.log(userChoice + " does not appear in the word.");
             }
             // if user runs out of chances
-            if (g === 0 && word !== theWord.join(" ")) {      // ! this logic is working but not factoring that the word wasn't guessed
+            if (g === 0 && word !== currentWord.join("")) {
                 alert("GAME OVER, YOU REBEL SCUM! Refresh the page to try again.");
                 wins--;
                 winNum.textContent = wins;
                 // if user guesses all letters before running out of guesses, increment wins #, show congratulations alert,
-            } else if (word === theWord.join(" ")) {       // ! This logic is not working
+            } else if (word === currentWord.join("") && g > 0) {       
+                // increment number of wins
                 wins++;
                 winNum.textContent = wins;
                 confirm("Great job kid, that shot was one in a million!");
-
+                // and move to the next word - re-initialize the game with a function? NEED SOME GUIDANCE ON THIS OPERATION
             }
-            // increment number of wins
-            // and move to the next word - re-initialize the game? NEED SOME GUIDANCE ON THIS OPERATION
-
-
         }
-
-
-
-
-
-
-
     </script>
 
 </body>
