@@ -77,13 +77,12 @@
             }
             // if user runs out of chances
             if (g === 0 && word !== currentWord.join("")) {
-                alert("GAME OVER, YOU REBEL SCUM! Refresh the page to try again.");  // Need to update this message once wins can go up and down
+                alert("GAME OVER, YOU REBEL SCUM! You can try another word, but I'm going to take one of your wins!");  // Need to update this message once wins can go up and down
                 wins--;
                 winNum.textContent = wins;
                 gameReset();
                 // if user guesses all letters before running out of guesses, increment wins #, show congratulations alert
             } else if (word === currentWord.join("") && g > 0) {
-                // increment number of wins
                 wins++;
                 winNum.textContent = wins;
                 confirm("Great job kid, that shot was one in a million!");
