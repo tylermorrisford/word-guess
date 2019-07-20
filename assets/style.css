@@ -1,5 +1,5 @@
 body {
-    background-image: url("images/sarlacc-pit.jpg");
+    background-image: url("images/death-star.png");
     background-size: auto 100%;
     background-color: rgb(51, 51, 51);
 }
@@ -10,7 +10,7 @@ h1 h2 h3 p {
     background-color: white;
     border: 1px solid black;
     border-radius: 25px;
-    opacity: 0.8;
+    opacity: 0.6;
     color: black;
     width: 50%;
     height: 60%;
