@@ -1,6 +1,6 @@
 body {
     background-image: url("images/death-star.png");
-    background-size: auto 100%;
+    background-size: contain;
     background-color: rgb(51, 51, 51);
 }
 h1 h2 h3 p {

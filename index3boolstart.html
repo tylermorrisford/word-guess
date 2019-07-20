@@ -135,9 +135,9 @@
                 // if user guesses all letters before running out of guesses, increment wins #, show congratulations alert
             } else if (word === currentWord.join("") && g > 0) {
                 // increment number of wins
-                confirm("Great job kid, that shot was one in a million!");
                 wins++;
                 winNum.textContent = wins;
+                confirm("Great job kid, that shot was one in a million!");
                 gameReset();
                 // and move to the next word - re-initialize the game with a function? NEED SOME GUIDANCE ON THIS OPERATION
             }
