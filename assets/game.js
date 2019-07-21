@@ -20,7 +20,9 @@
         var g;
         let word;
         var userChoice;
+        let timeoutID;
         let wins = 0;
+        let userName = prompt("Welcome to the Rebellion, what's your name?");
         // function chooses word
         function chooseWord() {
             word = levelOne[Math.floor(Math.random() * levelOne.length)];
@@ -43,8 +45,22 @@
             guessesList = [];
             userEntry.textContent = guessesList.join(" ");
             chooseWord();
-
         }
+
+        function completeLoss() {
+            alert("Wow " + userName + ", you're bad at this. So bad that we'll take care of refreshing the page for you. Give it another shot!");
+            location.reload();
+        }
+        // Delayed Alerts
+        function delayedAlertWin() {
+            timeoutID = window.setTimeout(window.alert, 100, "Great job " + userName + ", that shot was one in a million!");
+        }
+
+        function delayedAlertLoss() {
+            timeoutID = window.setTimeout(window.alert, 300, "These aren't the letters you're looking for. You'd like to give back one of your wins. Move along " + userName + ". Move along.");
+        }
+
+
         // Main game play
         document.onkeyup = function(event) {
             userChoice = event.key.toLowerCase();
@@ -71,17 +87,25 @@
                 console.log(userChoice + " does not appear in the word.");
             }
             // if user runs out of chances
-            if (g === 0 && word !== currentWord.join("")) {
-                alert("GAME OVER, YOU REBEL SCUM! You can try another word, but I'm going to take one of your wins!");  
+             if (wins < 0) {
+                alert("Wow " + userName + "Well " + userName + ", it looks like the empire has won again. We'll take care of refreshing the page for you. Give it another shot!");
+                location.reload();
+            } 
+            if (g === 0 && wins >=0 && word !== currentWord.join("")) {
                 wins--;
                 winNum.textContent = wins;
+                delayedAlertLoss() 
                 gameReset();
-                // Need to add if statement for 'complete loss of the game, user has -1 wins, window.reload
+
+                // function for 'complete' loss of the game
                 // if user guesses all letters before running out of guesses, increment wins #, show congratulations alert
             } else if (word === currentWord.join("") && g > 0) {
                 wins++;
                 winNum.textContent = wins;
-                confirm("Great job kid, that shot was one in a million!");
+                delayedAlertWin();
                 gameReset();
             }
         }
+
+
+
