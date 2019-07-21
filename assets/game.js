@@ -87,8 +87,8 @@
                 console.log(userChoice + " does not appear in the word.");
             }
             // if user runs out of chances
-             if (wins < 0) {
-                alert("Wow " + userName + "Well " + userName + ", it looks like the empire has won again. We'll take care of refreshing the page for you. Give it another shot!");
+             if ( g === 0 && wins === 0 ) {
+                alert("Well " + userName + ", it looks like the empire has won again. We'll take care of refreshing the page for you. Give it another shot!");
                 location.reload();
             } 
             if (g === 0 && wins >=0 && word !== currentWord.join("")) {
