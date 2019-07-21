@@ -23,7 +23,15 @@
         let timeoutID;
         let wins = 0;
         let userName = prompt("Welcome to the Rebellion, what's your name?");
-        // function chooses word
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        // audio
+        var chewbacca = new Audio("wookie.wav");
+        var r2d2 = new Audio("R2D2.wav");
+        var lightspeed = new Audio("lightspeed.mp3");
+        var lightsaber = new Audio("lightsaber-on.wav");   
+        // Functions ------------------
         function chooseWord() {
             word = levelOne[Math.floor(Math.random() * levelOne.length)];
             // use word.length to display the number of underscores as blank spots
@@ -51,6 +59,20 @@
             alert("Wow " + userName + ", you're bad at this. So bad that we'll take care of refreshing the page for you. Give it another shot!");
             location.reload();
         }
+        
+        function vaderModal() {
+            modal.style.display = "block";
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+            
+        }
+        
         // Delayed Alerts
         function delayedAlertWin() {
             timeoutID = window.setTimeout(window.alert, 100, "Great job " + userName + ", that shot was one in a million!");
@@ -86,24 +108,32 @@
             } else {
                 console.log(userChoice + " does not appear in the word.");
             }
-            // if user runs out of chances
+            // if user runs out of chances and has zero wins
              if ( g === 0 && wins === 0 ) {
                 alert("Well " + userName + ", it looks like the empire has won again. We'll take care of refreshing the page for you. Give it another shot!");
                 location.reload();
             } 
+            // shows a gif 
+            if ( g === 4 && wins === 0 ) {
+                vaderModal();
+            }
             if (g === 0 && wins >=0 && word !== currentWord.join("")) {
                 wins--;
                 winNum.textContent = wins;
                 delayedAlertLoss() 
                 gameReset();
-
-                // function for 'complete' loss of the game
                 // if user guesses all letters before running out of guesses, increment wins #, show congratulations alert
             } else if (word === currentWord.join("") && g > 0) {
                 wins++;
                 winNum.textContent = wins;
                 delayedAlertWin();
                 gameReset();
+            }
+            if (wins === 1) {
+                lightsaber.play();
+            }
+            if (wins === 3) {
+                lightspeed.play();
             }
         }
 
