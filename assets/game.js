@@ -27,10 +27,12 @@
         var btn = document.getElementById("myBtn");
         var span = document.getElementsByClassName("close")[0];
         // audio
-        var chewbacca = new Audio("wookie.wav");
-        var r2d2 = new Audio("R2D2.wav");
-        var lightspeed = new Audio("lightspeed.mp3");
-        var lightsaber = new Audio("lightsaber-on.wav");   
+        var chewbacca = new Audio("assets/wookie.wav");
+        var r2d2 = new Audio("assets/R2D2.wav");
+        var lightspeed = new Audio("assets/lightspeed.mp3");
+        var lightsaber = new Audio("assets/lightsaber-on.wav");   
+        var tie = new Audio("assets/tie2.mp3");   
+        var freak = new Audio("assets/freakout.mp3");   
         // Functions ------------------
         function chooseWord() {
             word = levelOne[Math.floor(Math.random() * levelOne.length)];
@@ -102,7 +104,6 @@
                     }
                     // the array of spaces will add user's chosen letter into the index of the hidden word
                     theWord.textContent = currentWord.join(" ");
-                    console.log(word);
                 }
                 // if users guess does not exist in the string, console.log an error message as many times as word.length
             } else {
@@ -114,28 +115,42 @@
                 location.reload();
             } 
             // shows a gif 
-            if ( g === 4 && wins === 0 ) {
+            if ( g === 2 ) {
+                chewbacca.play();
+            }
+            if ( g === 3 && wins === 0 ) {
                 vaderModal();
             }
             if (g === 0 && wins >=0 && word !== currentWord.join("")) {
                 wins--;
                 winNum.textContent = wins;
+                freak.play();
                 delayedAlertLoss() 
                 gameReset();
                 // if user guesses all letters before running out of guesses, increment wins #, show congratulations alert
-            } else if (word === currentWord.join("") && g > 0) {
+            } else if (word === currentWord.join("") && g > 0 && wins === 1) {
                 wins++;
                 winNum.textContent = wins;
+                tie.play();
+                gameReset();
+            } else if (word === currentWord.join("") && g > 0 && wins === 2) {
+                wins++;
+                winNum.textContent = wins;
+                r2d2.play();
+                gameReset();
+            } else if (word === currentWord.join("") && g > 0 && wins === 3) {
+                wins++;
+                winNum.textContent = wins;
+                lightspeed.play();
+                gameReset();
+            }
+             else if (word === currentWord.join("") && g > 0) {
+                wins++;
+                winNum.textContent = wins;
+                lightsaber.play();
                 delayedAlertWin();
                 gameReset();
             }
-            if (wins === 1) {
-                lightsaber.play();
-            }
-            if (wins === 3) {
-                lightspeed.play();
-            }
+             
         }
-
-
 

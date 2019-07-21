@@ -22,7 +22,7 @@ h1 h2 h3 p {
     font-family: 'Open Sans', sans-serif;
 }
 
-/* game modal for 0 wins, 4 guesses left */
+/* game modal for 0 wins, 3 guesses left */
 .modal {
     display: none; 
     position: fixed;
