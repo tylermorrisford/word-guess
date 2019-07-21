@@ -16,7 +16,8 @@ h1 h2 h3 p {
     color: black;
     width: 50%;
     height: 50%;
-    margin: 200px auto 100px;
+    padding: 25px 15px;
+    margin: 150px auto 100px;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
 }
