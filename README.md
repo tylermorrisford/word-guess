@@ -11,7 +11,7 @@ The game first prompts the user to enter their name, which is subsequently used 
 
 As soon as the window loads the game chooses a word randomly from an array, then uses the length of that secret word for two purposes, first to create blank spaces showing the user how long their secret word is(with a loop), and also to generate a number of guesses left (the length of the word + 6).
 
-A document.onkeypress event captures the user input as guesses against the secret word. regex rules block the user from guessing numbers, and .toLowerCase nullifies capital letters. Keydown was changed to keypress to block shift, ctrl, alt keys. Each time the user enters a valid letter key, the user's guesses left will decrement.
+A document.onkeypress event captures the user input as guesses against the secret word. regex rules block the user from guessing numbers, .includes() blocks duplicate user guesses, and .toLowerCase nullifies capital letters. Keydown was changed to keypress to block shift, ctrl, alt keys. Each time the user enters a valid letter key, the user's guesses left will decrement.
 
 The game will then use a loop to check the users guess against the secret word array index; if users guess exists in the secret word, the blank space is replaced by the letter.
 
