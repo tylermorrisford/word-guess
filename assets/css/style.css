@@ -20,6 +20,11 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.small {
+  font-size: 0.5rem;
+  line-height: 0.5;
+}
+
 hr {
     width: 60%;
     border: 1px solid white;
