@@ -89,7 +89,9 @@
             userChoice = event.key.toLowerCase();
             // make sure userChoice is a letter
             var reg = /^[a-z]+$/i;
-            if (reg.test(userChoice)) {
+            if (guessesList.includes(userChoice)) {
+                alert("Oops! Looks like you already chose that letter");
+                } else if (reg.test(userChoice)) {
                 // log users guess on the page, and add it to the array guessesList
                 guessesList.push(userChoice);
                 userEntry.textContent = guessesList.join(" ");
@@ -112,12 +114,10 @@
                     // the array of spaces will add user's chosen letter into the index of the hidden word
                     theWord.textContent = currentWord.join(" ");
                 }
-                // if users guess does not exist in the string, console.log an error message as many times as word.length
             }
             // if user runs out of chances and has zero wins
              if ( g === 0 && wins === 0 ) {
-                alert("Well " + userName + ", it looks like the empire has won again. We'll take care of refreshing the page for you. Give it another shot!");
-                location.reload();
+                completeLoss();
             } 
             // shows a gif 
             if ( g === 2 ) {
