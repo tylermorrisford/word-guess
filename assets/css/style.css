@@ -1,13 +1,11 @@
 
 
 body {
-    background-image: url("images/death-star.png");
+    background-image: url("../images/death-star.png");
     background-size: cover;
     background-color: rgb(51, 51, 51);
 }
-h1 h2 h3 p {
-    font-size: 1.5rem;
-}
+
 .wrapper {
     background-color: white;
     border: 1px solid black;
@@ -22,6 +20,10 @@ h1 h2 h3 p {
     font-family: 'Open Sans', sans-serif;
 }
 
+hr {
+    width: 60%;
+    border: 1px solid white;
+}
 /* game modal for 0 wins, 3 guesses left */
 .modal {
     display: none; 
@@ -40,7 +42,7 @@ h1 h2 h3 p {
   
   /* modal content */
   .modal-content {
-    background-image: url("images/vader-jump.gif");
+    background-image: url("../images/vader-jump.gif");
     background-color: #524a4a;
     color: white;
     margin: auto;

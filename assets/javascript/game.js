@@ -27,12 +27,12 @@
         var btn = document.getElementById("myBtn");
         var span = document.getElementsByClassName("close")[0];
         // audio
-        var chewbacca = new Audio("assets/wookie.wav");
-        var r2d2 = new Audio("assets/R2D2.wav");
-        var lightspeed = new Audio("assets/lightspeed.mp3");
-        var lightsaber = new Audio("assets/lightsaber-on.wav");   
-        var tie = new Audio("assets/tie2.mp3");   
-        var freak = new Audio("assets/freakout.mp3");   
+        var chewbacca = new Audio("assets/audio/wookie.wav");
+        var r2d2 = new Audio("assets/audio/R2D2.wav");
+        var lightspeed = new Audio("assets/audio/lightspeed.mp3");
+        var lightsaber = new Audio("assets/audio/lightsaber-on.wav");   
+        var tie = new Audio("assets/audio/tie2.mp3");   
+        var freak = new Audio("assets/audio/freakout.mp3");   
         // Functions ------------------
         function chooseWord() {
             word = levelOne[Math.floor(Math.random() * levelOne.length)];
@@ -41,7 +41,6 @@
                 currentWord[i] = "_";
             } 
             g = (word.length + 6);
-            console.log(word, g);
             chances.textContent = g;
             theWord.textContent = currentWord.join(" ");
         }
@@ -88,12 +87,20 @@
         // Main game play
         document.onkeyup = function(event) {
             userChoice = event.key.toLowerCase();
-            // log users guess on the page, and add it to the array guessesList
-            guessesList.push(userChoice);
-            userEntry.textContent = guessesList.join(" ");
-            // decrement the remaining guesses
-            g--;
-            chances.textContent = g;
+            // make sure userChoice is a letter
+            var reg = /^[a-z]+$/i;
+            if (reg.test(userChoice)) {
+                // log users guess on the page, and add it to the array guessesList
+                guessesList.push(userChoice);
+                userEntry.textContent = guessesList.join(" ");
+                // decrement the remaining guesses
+                g--;
+                chances.textContent = g;
+
+            } else {
+                alert("Please only choose letters!");
+            }
+
             // check users guess against the current array index; if users guess exists in the object,
             if (word.includes(userChoice)) {
                 //  replace underscore with that letter            
@@ -106,8 +113,6 @@
                     theWord.textContent = currentWord.join(" ");
                 }
                 // if users guess does not exist in the string, console.log an error message as many times as word.length
-            } else {
-                console.log(userChoice + " does not appear in the word.");
             }
             // if user runs out of chances and has zero wins
              if ( g === 0 && wins === 0 ) {
