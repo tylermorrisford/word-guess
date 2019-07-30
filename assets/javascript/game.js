@@ -85,7 +85,7 @@
 
 
         // Main game play
-        document.onkeyup = function(event) {
+        document.onkeypress = function(event) {
             userChoice = event.key.toLowerCase();
             // make sure userChoice is a letter
             var reg = /^[a-z]+$/i;
